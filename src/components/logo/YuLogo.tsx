@@ -11,7 +11,7 @@ interface YuLogoProps {
 /** sessionStorage 标记：描边入场每会话只播一次（Tech_Design §9） */
 const INTRO_KEY = 'yu-logo-intro';
 
-/** "yu" 连笔字标路径（圆头笔画，y 尾与 u 起笔连续成弧，PRD §6.5 流动母题） */
+/** "yu" 连笔字标路径（=「宇」的拼音，圆头笔画，y 尾与 u 起笔连续成弧，PRD §6.5 流动母题） */
 const LETTER_PATH =
   'M14 14 V34 Q14 50 30 48 Q40 46 48 34 L48 20 V38 Q48 52 62 50 Q76 48 76 34 V20';
 
@@ -43,7 +43,7 @@ export default function YuLogo({ size = 48, animated = true }: YuLogoProps) {
       height={Math.round((size * 72) / 128)}
       viewBox="0 0 128 72"
       role="img"
-      aria-label="yu"
+      aria-label="宇（yu）字标"
     >
       <defs>
         <clipPath id={clipId}>

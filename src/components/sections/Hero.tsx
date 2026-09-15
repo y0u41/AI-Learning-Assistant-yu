@@ -15,7 +15,10 @@ export default function Hero() {
       {/* "yu" 字标：导航 / Hero / Footer 三处复用（Tech_Design §9） */}
       <YuLogo size={96} animated />
 
-      <h1 className="text-4xl font-semibold text-ink-primary md:text-6xl">yu 的作品集</h1>
+      {/* 标题文案取自 data（AGENTS §7 禁止组件内硬编码内容） */}
+      <h1 className="text-4xl font-semibold text-ink-primary md:text-6xl">
+        {profile.name}的作品集
+      </h1>
 
       <p className="max-w-xl text-base text-ink-secondary md:text-lg">{profile.tagline}</p>
 

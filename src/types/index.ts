@@ -16,7 +16,7 @@ export interface ProjectLink {
   label?: string;
   /** 跳转地址；kind === 'install' 时指向安装/使用文档 */
   url: string;
-  /** 待复制命令，仅 kind === 'install' 时使用（如 npm i -g @yu/pack） */
+  /** 待复制命令，仅 kind === 'install' 时使用（如 npm i -g @y0u41/pack） */
   command?: string;
 }
 

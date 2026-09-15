@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
-  <!-- M1 占位头像：M5 上线前替换为真实照片（PRD §8） -->
+  <!-- M5 占位头像：「宇」字标（与 favicon.svg 同源风格，无滤镜保证小尺寸可读）。
+       替换真实照片：把方形图片放入 public/ 后改 src/data/profile.ts 的 avatar 字段即可。 -->
   <circle cx="48" cy="48" r="46" fill="#0A0A0A" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
-  <circle cx="48" cy="38" r="14" fill="rgba(255,255,255,0.10)" />
-  <path d="M20 88c5-18 15-27 28-27s23 9 28 27z" fill="rgba(255,255,255,0.08)" />
   <text
     x="48"
-    y="92"
+    y="63"
     text-anchor="middle"
-    font-family="Arial, sans-serif"
-    font-size="10"
-    fill="rgba(255,255,255,0.45)"
-  >yu</text>
+    font-family="'Microsoft YaHei','PingFang SC','Noto Sans SC',sans-serif"
+    font-size="40"
+    font-weight="600"
+    fill="rgba(255,255,255,0.92)"
+  >宇</text>
 </svg>
