@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design Tokens（Tech_Design §7）—— 全站唯一的颜色与字体源头。
+ * 红线（AGENTS §5.1）：只有黑白，禁止引入彩色；层级只靠透明度梯度 + 字重 + 字号。
+ * 颜色一律经 CSS 变量引用，V2 明色主题只需 [data-theme='light'] 覆盖变量，组件零改动。
+ */
+:root {
+  --bg: #0a0a0a;
+  --surface: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.1);
+  --text-primary: rgba(255, 255, 255, 0.92);
+  --text-secondary: rgba(255, 255, 255, 0.65);
+  --text-tertiary: rgba(255, 255, 255, 0.45);
+  --glow: rgba(255, 255, 255, 0.55);
+
+  --font-display: 'Quicksand', 'MiSans', 'HarmonyOS Sans SC', 'PingFang SC',
+    'Microsoft YaHei', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+
+  --radius-card: 20px;
+  --blur-glass: 16px;
+}
+
+/* 基线：黑白底 + 展示字体；正文中文走系统字体栈（禁止自托管中文字体，AGENTS §8） */
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 键盘焦点可见（AGENTS §4.7，M3 复查焦点样式细节） */
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 2px;
+}
+
+/* 玻璃拟态降级：不支持 backdrop-filter 的环境改用实色（Tech_Design §7） */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: rgba(255, 255, 255, 0.07) !important;
+    backdrop-filter: none !important;
+  }
+}
+
+/* 锚点平滑滚动（PRD F2）；用户开启“减少动态效果”时不启用（AGENTS §5.4） */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

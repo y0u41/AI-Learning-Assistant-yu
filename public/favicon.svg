@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- M0 占位：M2 替换为 YuLogo 同源简化版（无滤镜，保证小尺寸可读，Tech_Design §9） -->
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="#0A0A0A" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+  <text
+    x="32"
+    y="43"
+    text-anchor="middle"
+    font-family="Arial, sans-serif"
+    font-size="30"
+    font-weight="600"
+    fill="rgba(255,255,255,0.92)"
+  >yu</text>
+</svg>
