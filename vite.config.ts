@@ -52,7 +52,8 @@ function personJsonLd(): Plugin {
         email: profile.email,
         knowsAbout: skills.flatMap((group) => group.items),
         sameAs: profile.socials.map((social) => social.url),
-        // TODO(M5): 上线定域名后补充 "url" 字段（正式地址）
+        // M5：GitHub Pages 子路径地址（切换 Vercel 等根域名托管时同步更新）
+        url: 'https://y0u41.github.io/AI-Learning-Assistant-yu/',
       }
       return [
         {

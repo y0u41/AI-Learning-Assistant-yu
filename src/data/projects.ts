@@ -22,7 +22,8 @@ export const projects: Project[] = [
     ],
     cover: {
       type: 'image',
-      src: '/projects/resume-agent.svg',
+      // 相对资源名；展示层用 import.meta.env.BASE_URL 拼接（兼容 Pages 子路径部署）
+      src: 'projects/resume-agent.svg',
       alt: '简历评估 Agent 对话界面截图（M1 占位）',
       width: 800,
       height: 500,

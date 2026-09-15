@@ -29,7 +29,7 @@ export default function Hero() {
 
       {/* 显式宽高防 CLS（PRD §7 性能要求） */}
       <img
-        src={profile.avatar}
+        src={`${import.meta.env.BASE_URL}${profile.avatar}`}
         alt={`${profile.name} 的头像`}
         width="96"
         height="96"

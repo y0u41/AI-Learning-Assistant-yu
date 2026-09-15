@@ -9,7 +9,7 @@ export const profile: Profile = {
   name: 'yu',
   tagline: '把想法快速做成能用的产品：Agent、低代码与效率工具',
   roles: ['Agent 开发', '低代码', '工具控'],
-  avatar: '/avatar.svg',
+  avatar: 'avatar.svg', // 相对资源名；展示层用 import.meta.env.BASE_URL 拼接（兼容 Pages 子路径部署）
   aboutParagraphs: [
     '我是 yu，喜欢把「重复劳动」变成「一键完成」：从 Agent 智能体、零代码平台，到 AI 代码编辑器和命令行工具，我做的东西都围绕同一个目标——让好的想法更快落地。',
     '日常在 TypeScript 与 Python 之间切换，用 LangGraph 编排多智能体，用 React 与 Node.js 搭建产品原型；比起堆功能，我更在意交互是否顺手、维护是否省心。',

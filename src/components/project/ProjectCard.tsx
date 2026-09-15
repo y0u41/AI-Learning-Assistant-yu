@@ -59,7 +59,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div className="relative aspect-[16/10] w-full shrink-0">
           {project.cover?.type === 'image' ? (
             <img
-              src={project.cover.src}
+              src={`${import.meta.env.BASE_URL}${project.cover.src}`}
               alt={project.cover.alt}
               width={project.cover.width}
               height={project.cover.height}

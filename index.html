@@ -10,15 +10,20 @@
       content="yu 的作品集：Agent 智能体、零代码平台、AI 代码编辑器、命令行工具等多类型作品的单页展示。"
     />
     <title>yu 的作品集</title>
-    <!-- M4（Build.md §2.5）：OG / Twitter 分享标签；og:url 与 og:image 绝对地址待 M5 定域名后补全 -->
+    <!-- M4（Build.md §2.5）：OG / Twitter 分享标签；OG 协议要求绝对 URL——
+         域名为 GitHub Pages 子路径（M5），切换 Vercel 等根域名托管时同步更新 -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://y0u41.github.io/AI-Learning-Assistant-yu/" />
     <meta property="og:site_name" content="yu 的作品集" />
     <meta property="og:title" content="yu 的作品集" />
     <meta
       property="og:description"
       content="yu 的作品集：Agent 智能体、零代码平台、AI 代码编辑器、命令行工具等多类型作品的单页展示。"
     />
-    <meta property="og:image" content="/og-image.png" />
+    <meta
+      property="og:image"
+      content="https://y0u41.github.io/AI-Learning-Assistant-yu/og-image.png"
+    />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
@@ -32,7 +37,10 @@
       name="twitter:description"
       content="yu 的作品集：Agent 智能体、零代码平台、AI 代码编辑器、命令行工具等多类型作品的单页展示。"
     />
-    <meta name="twitter:image" content="/og-image.png" />
+    <meta
+      name="twitter:image"
+      content="https://y0u41.github.io/AI-Learning-Assistant-yu/og-image.png"
+    />
   </head>
   <body>
     <div id="root"></div>
