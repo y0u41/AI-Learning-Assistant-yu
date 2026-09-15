@@ -52,3 +52,35 @@ body {
     scroll-behavior: smooth;
   }
 }
+
+/* Logo 待机动效（Tech_Design §9）：流光位移 + 透明度呼吸 ±8%，周期 ≥4s；
+   统一包在 prefers-reduced-motion: no-preference 中（AGENTS §5.4） */
+@media (prefers-reduced-motion: no-preference) {
+  .logo-sheen {
+    animation: logo-sheen 6s ease-in-out infinite alternate;
+  }
+
+  @keyframes logo-sheen {
+    from {
+      transform: translateX(-40px);
+      opacity: 0.35;
+    }
+    to {
+      transform: translateX(40px);
+      opacity: 0.9;
+    }
+  }
+
+  .logo-breathe {
+    animation: logo-breathe 5s ease-in-out infinite alternate;
+  }
+
+  @keyframes logo-breathe {
+    from {
+      opacity: 0.92;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

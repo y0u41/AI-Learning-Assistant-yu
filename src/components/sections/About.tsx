@@ -1,15 +1,26 @@
+import { motion, useReducedMotion } from 'framer-motion';
 import SectionHeading from '../ui/SectionHeading';
 import Chip from '../ui/Chip';
 import { profile } from '../../data/profile';
 import { skills } from '../../data/skills';
+import { sectionReveal } from '../../lib/motion';
 
 /**
- * 关于我（M1）：介绍段落 + 技能分组 chips，内容全部来自 data 文件（PRD F3）。
+ * 关于我：介绍段落 + 技能分组 chips，内容全部来自 data 文件（PRD F3）。
+ * 分区 reveal：whileInView 一次性（reduced 时禁用，AGENTS §5.4）。
  */
 export default function About() {
+  const reduced = useReducedMotion();
+
   return (
     <section id="about" aria-labelledby="about-title" className="scroll-mt-20">
-      <div className="mx-auto max-w-content px-6 py-16 md:py-24">
+      <motion.div
+        className="mx-auto max-w-content px-6 py-16 md:py-24"
+        initial={reduced ? false : 'hidden'}
+        whileInView={reduced ? undefined : 'visible'}
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionReveal}
+      >
         <SectionHeading index="01" title="关于我" id="about-title" />
         <div className="grid gap-12 md:grid-cols-2 md:gap-16">
           <div className="space-y-4">
@@ -36,7 +47,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

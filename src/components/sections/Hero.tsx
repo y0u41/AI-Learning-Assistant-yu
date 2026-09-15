@@ -1,10 +1,11 @@
+import YuLogo from '../logo/YuLogo';
 import Chip from '../ui/Chip';
 import { profile } from '../../data/profile';
 
 /**
- * 首屏 Hero（M1 静态版）：Logo 占位 + H1 + 简介 + 身份标签 + 头像 + 快捷按钮 + 滚动指示。
+ * 首屏 Hero：YuLogo（描边入场 + 呼吸）+ H1 + 简介 + 身份标签 + 头像 + 快捷按钮 + 滚动指示。
  * <h1> 必须是全页唯一（PRD F1 验收）。
- * TODO(M2): Logo 占位换 YuLogo（描边入场 + 呼吸）；滚动指示浮动动画（reduced-motion 降级）。
+ * TODO(M3): 滚动指示浮动动画接入（reduced-motion 降级）。
  */
 export default function Hero() {
   return (
@@ -12,13 +13,8 @@ export default function Hero() {
       id="top"
       className="relative flex min-h-screen flex-col items-center justify-center gap-6 px-6 text-center"
     >
-      {/* Logo 占位：M2 换 YuLogo 同款字标 */}
-      <div
-        aria-hidden="true"
-        className="flex items-center justify-center rounded-full border border-ink-border bg-white/5 px-8 py-3 font-mono text-3xl font-semibold text-ink-primary shadow-glass"
-      >
-        yu
-      </div>
+      {/* "yu" 字标：导航 / Hero / Footer 三处复用（Tech_Design §9） */}
+      <YuLogo size={96} animated />
 
       <h1 className="text-4xl font-semibold text-ink-primary md:text-6xl">yu 的作品集</h1>
 
