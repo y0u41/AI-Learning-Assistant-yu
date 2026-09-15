@@ -11,8 +11,8 @@ permissions:
   contents: read
   pages: write
   id-token: write
-  # configure-pages 的 enablement 用 GITHUB_TOKEN 自动开启 Pages（Source=GitHub Actions）
-  administration: write
+# 注意：首次启用需在仓库 Settings → Pages → Source 选「GitHub Actions」（一次性；
+# GITHUB_TOKEN 无 administration 权限，无法用 enablement 参数自动启用）
 
 concurrency:
   group: pages
@@ -37,10 +37,8 @@ jobs:
       - name: Build
         run: npm run build -- --base=/AI-Learning-Assistant-yu/
 
-      - name: Enable and configure GitHub Pages
+      - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
