@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-# Sitemap 待 M5 上线定域名后补充（Build.md §2.6）
+# M5（Build.md §2.6）：域名已定为 GitHub Pages 项目页子路径
+Sitemap: https://y0u41.github.io/AI-Learning-Assistant-yu/sitemap.xml

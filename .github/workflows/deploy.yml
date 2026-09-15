@@ -11,8 +11,9 @@ permissions:
   contents: read
   pages: write
   id-token: write
-# 注意：首次启用需在仓库 Settings → Pages → Source 选「GitHub Actions」（一次性；
-# GITHUB_TOKEN 无 administration 权限，无法用 enablement 参数自动启用）
+# 注意：Pages 站点已启用（build_type=workflow，见仓库 Settings → Pages）；
+# configure-pages 的 enablement 参数要求非 GITHUB_TOKEN 的凭据（PAT / GitHub App），
+# 故此处不传 enablement：首次启用已用带 repo 权限的用户凭据完成，后续 push 即自动部署。
 
 concurrency:
   group: pages

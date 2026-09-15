@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- M5（Build.md §2.6）：单页站点，仅一条 URL；域名为 GitHub Pages 项目页子路径。
+     切换自定义域名 / Vercel 根域名托管时同步更新 loc 与 robots.txt 中的 Sitemap 行。 -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://y0u41.github.io/AI-Learning-Assistant-yu/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

@@ -10,9 +10,15 @@ import { skills } from './src/data/skills'
  * Quicksand latin 400/600（H1 与正文字重，首屏必用）注入 <link rel="preload">。
  */
 function firstScreenFontPreload(): Plugin {
+  // 部署到 GitHub Pages 子路径时 base 非 '/'，preload 的 href 必须带上 base，
+  // 否则字体预加载会 404（并可能导致字体二次下载）。
+  let base = '/'
   return {
     name: 'preload-first-screen-fonts',
     apply: 'build',
+    configResolved(config) {
+      base = config.base.endsWith('/') ? config.base : `${config.base}/`
+    },
     transformIndexHtml(_html, ctx) {
       if (!ctx.bundle) return []
       const tags: HtmlTagDescriptor[] = []
@@ -25,7 +31,7 @@ function firstScreenFontPreload(): Plugin {
               rel: 'preload',
               as: 'font',
               type: 'font/woff2',
-              href: `/${fileName}`,
+              href: `${base}${fileName}`,
               // 字体请求始终以 CORS 模式发出，preload 必须带 crossorigin
               crossorigin: '',
             },
