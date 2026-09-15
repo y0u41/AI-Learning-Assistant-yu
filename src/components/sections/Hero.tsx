@@ -5,7 +5,6 @@ import { profile } from '../../data/profile';
 /**
  * 首屏 Hero：YuLogo（描边入场 + 呼吸）+ H1 + 简介 + 身份标签 + 头像 + 快捷按钮 + 滚动指示。
  * <h1> 必须是全页唯一（PRD F1 验收）。
- * TODO(M3): 滚动指示浮动动画接入（reduced-motion 降级）。
  */
 export default function Hero() {
   return (
@@ -52,11 +51,11 @@ export default function Hero() {
         </a>
       </div>
 
-      {/* 滚动指示：点击平滑滚动至「关于」（M2 加浮动动画，须 reduced-motion 降级） */}
+      {/* 滚动指示：点击平滑滚动至「关于」；float-y 浮动动画（index.css，reduced 降级） */}
       <a
         href="#about"
         aria-label="向下滚动至「关于我」"
-        className="absolute bottom-8 text-ink-tertiary transition-colors hover:text-ink-primary"
+        className="float-y absolute bottom-8 text-ink-tertiary transition-colors hover:text-ink-primary"
       >
         <svg
           width="24"

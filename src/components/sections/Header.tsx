@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import YuLogo from '../logo/YuLogo';
@@ -14,15 +14,18 @@ const NAV_ITEMS = [
 const SECTION_IDS = NAV_ITEMS.map((item) => item.id);
 
 /**
- * 吸顶玻璃导航（PRD F2）：下滑后玻璃态（顶部透明）、当前分区高亮（92% 白 / 其余 65% 白）、
+ * 吸顶玻璃导航（PRD F2）：下滑后玻璃态（顶部透明）、当前分区高亮（92% 白 + 下划线）、
  * ≤768px 汉堡 + 玻璃抽屉（点击菜单项滚动并收起，Esc 可关）。
- * TODO(M3): 焦点样式与抽屉焦点管理复查（Build.md §2.4）。
+ * M3 焦点管理（Build.md §2.4）：抽屉打开时焦点移入首个菜单项，关闭（含 Esc）后焦点回汉堡。
  */
 export default function Header() {
   const reduced = useReducedMotion();
   const active = useActiveSection(SECTION_IDS);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const wasOpenRef = useRef(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -30,6 +33,17 @@ export default function Header() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // 抽屉焦点往返：打开 → 首个菜单项；关闭 → 返回汉堡按钮（Esc 走 setOpen(false) 同路径）
+  useEffect(() => {
+    if (open && !wasOpenRef.current) {
+      wasOpenRef.current = true;
+      drawerRef.current?.querySelector<HTMLAnchorElement>('a')?.focus();
+    } else if (!open && wasOpenRef.current) {
+      wasOpenRef.current = false;
+      toggleRef.current?.focus();
+    }
+  }, [open]);
 
   // 抽屉 Esc 可关（Build.md §2.4 键盘路径，M2 提前接入）
   useEffect(() => {
@@ -72,7 +86,7 @@ export default function Header() {
                   aria-current={isActive ? 'true' : undefined}
                   className={
                     isActive
-                      ? 'text-ink-primary'
+                      ? 'relative text-ink-primary after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-white/60'
                       : 'text-ink-secondary transition-colors hover:text-ink-primary'
                   }
                 >
@@ -83,9 +97,10 @@ export default function Header() {
           })}
         </ul>
 
-        {/* 移动端汉堡按钮（≤768px，PRD F2） */}
+        {/* 移动端汉堡按钮（≤768px，PRD F2）；关闭抽屉后焦点返回此处 */}
         <button
           type="button"
+          ref={toggleRef}
           className="p-2 text-ink-secondary transition-colors hover:text-ink-primary md:hidden"
           aria-expanded={open}
           aria-controls="mobile-drawer"
@@ -101,6 +116,7 @@ export default function Header() {
         {open ? (
           <motion.div
             id="mobile-drawer"
+            ref={drawerRef}
             initial={reduced ? false : { opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduced ? undefined : { opacity: 0, y: -8 }}
